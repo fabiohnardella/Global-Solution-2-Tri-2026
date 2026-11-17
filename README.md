@@ -6,9 +6,9 @@
 
 | Integrante | RM |
 |---|---|
-| Caio Piato | [RM] |
-| Fabio Henrique | [RM] |
-| Gabriel Augusto | [RM] |
+| Caio Piato | [RM] 558130 |
+| Fabio Henrique | [RM] 555537 |
+| Gabriel Augusto | [RM] 55767 |
 
 **Links da entrega**
 - 🎥 Vídeo pitch técnico: [link do YouTube, não listado]
