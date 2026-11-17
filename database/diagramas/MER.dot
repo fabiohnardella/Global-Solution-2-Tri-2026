@@ -1,0 +1,78 @@
+graph MER {
+graph [layout=neato, overlap=prism, overlap_scaling=3, sep="+18", splines=true, fontname="Helvetica", bgcolor="white", pad=0.5, label=<<b>Rotas Acessíveis SP — MER conceitual (notação de Chen)</b><br/><font point-size="12">Cardinalidades (mín,máx) junto a cada entidade · elipses = atributos de relacionamento</font>>, labelloc=t, fontsize=22];
+node [fontname="Helvetica", fontsize=13];
+edge [fontname="Helvetica", fontsize=12, color="#475467", len=1.6];
+CIDADAO [shape=box, style="filled,bold", fillcolor="#FDF1E3", label="CIDADÃO", width=1.6, height=0.7];
+PERFIL [shape=box, style="filled,bold", fillcolor="#E8EEF9", label="PERFIL DE
+MOBILIDADE", width=1.6, height=0.7];
+CATEGORIA [shape=box, style="filled,bold", fillcolor="#E8EEF9", label="CATEGORIA DE
+BARREIRA", width=1.6, height=0.7];
+GRAVIDADE [shape=box, style="filled,bold", fillcolor="#E8EEF9", label="GRAVIDADE", width=1.6, height=0.7];
+LOCAL [shape=box, style="filled,bold", fillcolor="#E7F5EC", label="LOCAL", width=1.6, height=0.7];
+TRECHO [shape=box, style="filled,bold", fillcolor="#E7F5EC", label="TRECHO", width=1.6, height=0.7];
+ROTA [shape=box, style="filled,bold", fillcolor="#E7F5EC", label="ROTA", width=1.6, height=0.7];
+ALERTA [shape=box, style="filled,bold", fillcolor="#FDF1E3", label="ALERTA", width=1.6, height=0.7];
+HISTORICO [shape=box, style="filled,bold", fillcolor="#FDF1E3", label="HISTÓRICO
+DO ALERTA", width=1.6, height=0.7];
+PEDIDO [shape=box, style="filled,bold", fillcolor="#FDF1E3", label="PEDIDO DE
+APOIO", width=1.6, height=0.7];
+INDICADOR [shape=box, style="filled,bold", fillcolor="#F1E9FA", label="INDICADOR
+DE BAIRRO", width=1.6, height=0.7];
+r_adota [shape=diamond, style=filled, fillcolor="#FFFFFF", label="adota", fontsize=11, width=1.5, height=0.8];
+PERFIL -- r_adota [headlabel="", taillabel="(1,1)", labeldistance=2.2, labelfontcolor="#B42318"];
+r_adota -- CIDADAO [headlabel="(0,N)", labeldistance=2.2, labelfontcolor="#B42318"];
+r_sens [shape=diamond, style=filled, fillcolor="#FFFFFF", label="é sensível a", fontsize=11, width=1.5, height=0.8];
+PERFIL -- r_sens [headlabel="", taillabel="(0,N)", labeldistance=2.2, labelfontcolor="#B42318"];
+r_sens -- CATEGORIA [headlabel="(0,N)", labeldistance=2.2, labelfontcolor="#B42318"];
+r_sens_at [shape=ellipse, label="multiplicador", fontsize=10, style=dashed];
+r_sens -- r_sens_at [style=dashed, len=0.9];
+r_reporta [shape=diamond, style=filled, fillcolor="#FFFFFF", label="reporta", fontsize=11, width=1.5, height=0.8];
+CIDADAO -- r_reporta [headlabel="", taillabel="(1,1)", labeldistance=2.2, labelfontcolor="#B42318"];
+r_reporta -- ALERTA [headlabel="(0,N)", labeldistance=2.2, labelfontcolor="#B42318"];
+r_vota [shape=diamond, style=filled, fillcolor="#FFFFFF", label="vota em", fontsize=11, width=1.5, height=0.8];
+CIDADAO -- r_vota [headlabel="", taillabel="(0,N)", labeldistance=2.2, labelfontcolor="#B42318"];
+r_vota -- ALERTA [headlabel="(0,N)", labeldistance=2.2, labelfontcolor="#B42318"];
+r_vota_at [shape=ellipse, label="tipo do voto, data", fontsize=10, style=dashed];
+r_vota -- r_vota_at [style=dashed, len=0.9];
+r_ocorre [shape=diamond, style=filled, fillcolor="#FFFFFF", label="ocorre em", fontsize=11, width=1.5, height=0.8];
+TRECHO -- r_ocorre [headlabel="", taillabel="(1,1)", labeldistance=2.2, labelfontcolor="#B42318"];
+r_ocorre -- ALERTA [headlabel="(0,N)", labeldistance=2.2, labelfontcolor="#B42318"];
+r_class [shape=diamond, style=filled, fillcolor="#FFFFFF", label="classifica", fontsize=11, width=1.5, height=0.8];
+CATEGORIA -- r_class [headlabel="", taillabel="(1,1)", labeldistance=2.2, labelfontcolor="#B42318"];
+r_class -- ALERTA [headlabel="(0,N)", labeldistance=2.2, labelfontcolor="#B42318"];
+r_qual [shape=diamond, style=filled, fillcolor="#FFFFFF", label="qualifica", fontsize=11, width=1.5, height=0.8];
+GRAVIDADE -- r_qual [headlabel="", taillabel="(1,1)", labeldistance=2.2, labelfontcolor="#B42318"];
+r_qual -- ALERTA [headlabel="(0,N)", labeldistance=2.2, labelfontcolor="#B42318"];
+r_hist [shape=diamond, style=filled, fillcolor="#FFFFFF", label="registra", fontsize=11, width=1.5, height=0.8];
+ALERTA -- r_hist [headlabel="", taillabel="(1,1)", labeldistance=2.2, labelfontcolor="#B42318"];
+r_hist -- HISTORICO [headlabel="(1,N)", labeldistance=2.2, labelfontcolor="#B42318"];
+r_orig [shape=diamond, style=filled, fillcolor="#FFFFFF", label="é origem de", fontsize=11, width=1.5, height=0.8];
+LOCAL -- r_orig [headlabel="", taillabel="(1,1)", labeldistance=2.2, labelfontcolor="#B42318"];
+r_orig -- ROTA [headlabel="(0,N)", labeldistance=2.2, labelfontcolor="#B42318"];
+r_dest [shape=diamond, style=filled, fillcolor="#FFFFFF", label="é destino de", fontsize=11, width=1.5, height=0.8];
+LOCAL -- r_dest [headlabel="", taillabel="(1,1)", labeldistance=2.2, labelfontcolor="#B42318"];
+r_dest -- ROTA [headlabel="(0,N)", labeldistance=2.2, labelfontcolor="#B42318"];
+r_comp [shape=diamond, style=filled, fillcolor="#FFFFFF", label="é composta por", fontsize=11, width=1.5, height=0.8];
+ROTA -- r_comp [headlabel="", taillabel="(1,N)", labeldistance=2.2, labelfontcolor="#B42318"];
+r_comp -- TRECHO [headlabel="(0,N)", labeldistance=2.2, labelfontcolor="#B42318"];
+r_comp_at [shape=ellipse, label="ordem, sentido", fontsize=10, style=dashed];
+r_comp -- r_comp_at [style=dashed, len=0.9];
+r_aval [shape=diamond, style=filled, fillcolor="#FFFFFF", label="é avaliada para", fontsize=11, width=1.5, height=0.8];
+ROTA -- r_aval [headlabel="", taillabel="(0,N)", labeldistance=2.2, labelfontcolor="#B42318"];
+r_aval -- PERFIL [headlabel="(0,N)", labeldistance=2.2, labelfontcolor="#B42318"];
+r_aval_at [shape=ellipse, label="período, notas,
+trechos críticos", fontsize=10, style=dashed];
+r_aval -- r_aval_at [style=dashed, len=0.9];
+r_solic [shape=diamond, style=filled, fillcolor="#FFFFFF", label="solicita", fontsize=11, width=1.5, height=0.8];
+CIDADAO -- r_solic [headlabel="", taillabel="(1,1)", labeldistance=2.2, labelfontcolor="#B42318"];
+r_solic -- PEDIDO [headlabel="(0,N)", labeldistance=2.2, labelfontcolor="#B42318"];
+r_ctx [shape=diamond, style=filled, fillcolor="#FFFFFF", label="contextualiza", fontsize=11, width=1.5, height=0.8];
+ROTA -- r_ctx [headlabel="", taillabel="(0,1)", labeldistance=2.2, labelfontcolor="#B42318"];
+r_ctx -- PEDIDO [headlabel="(0,N)", labeldistance=2.2, labelfontcolor="#B42318"];
+r_loc [shape=diamond, style=filled, fillcolor="#FFFFFF", label="localiza", fontsize=11, width=1.5, height=0.8];
+TRECHO -- r_loc [headlabel="", taillabel="(0,1)", labeldistance=2.2, labelfontcolor="#B42318"];
+r_loc -- PEDIDO [headlabel="(0,N)", labeldistance=2.2, labelfontcolor="#B42318"];
+r_pred [shape=diamond, style=filled, fillcolor="#FFFFFF", label="predomina em", fontsize=11, width=1.5, height=0.8];
+CATEGORIA -- r_pred [headlabel="", taillabel="(0,1)", labeldistance=2.2, labelfontcolor="#B42318"];
+r_pred -- INDICADOR [headlabel="(0,N)", labeldistance=2.2, labelfontcolor="#B42318"];
+}
