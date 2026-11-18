@@ -93,8 +93,6 @@ O login não conta como funcionalidade: o app abre com uma entrada rápida **"En
 
 ---
 
-## 6. Como executar
-
 ### 6.1 Aplicativo
 
 **Pré-requisitos**
@@ -102,7 +100,7 @@ O login não conta como funcionalidade: o app abre com uma entrada rápida **"En
 - O app **Expo Go** no celular (Android ou iOS), ou um emulador.
 
 ```bash
-git clone [URL do repositório]
+git clone https://github.com/fabiohnardella/Global-Solution-2-Tri-2026
 cd rotas-acessiveis
 npm install
 npx expo start
@@ -124,21 +122,6 @@ npx tsc --noEmit
 7. Em **Ajustes**, você pode **restaurar os dados de demonstração** a qualquer momento.
 
 > A navegação usa um deslocamento **simulado** (acelerado, sem GPS), para dar para demonstrar os avisos de proximidade em sala.
-
-### 6.2 Banco de dados (Oracle)
-
-No **Oracle SQL Developer**, rode cada arquivo com **F5 (Executar Script)**, nesta ordem:
-
-| Ordem | Arquivo | Conteúdo |
-|---|---|---|
-| 1 | `database/01_ddl.sql` | 15 tabelas, restrições, índices e comentários (pode ser executado várias vezes) |
-| 2 | `database/02_plsql.sql` | Pacote `PKG_ROTAS_ACESSIVEIS`, 2 triggers, 3 views e o job diário |
-| 3 | `database/03_dados_iniciais.sql` | Os mesmos dados de demonstração do app |
-| 4 | `database/04_testes.sql` | Demonstração de cada rotina, com o resultado esperado comentado |
-
-O detalhamento completo está em [`database/README.md`](database/README.md).
-
----
 
 ## 7. Estrutura do projeto
 
